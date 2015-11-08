@@ -11,6 +11,7 @@ var getPostData = require('./getPostData')
 
 
 router.addRoute('/%:post', handlePost)
+router.addRoute('/post/:post', handlePost)
 function handlePost(req, res, match) {
   //console.log(req)
   var postId = '%' + match.params.post 

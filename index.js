@@ -18,6 +18,7 @@ function handlePost(req, res, match) {
 
   getPostData( postId, function(err, data) {
     data = JSON.stringify(data,null,2)
+    res.setHeader('Content-Type', 'application/json')
     res.end(data)
   })
 }

@@ -13,8 +13,11 @@ var getPostData = require('./getPostData')
 router.addRoute('/%:post', handlePost)
 router.addRoute('/post/:post', handlePost)
 function handlePost(req, res, match) {
-  //console.log(req)
   var postId = '%' + match.params.post 
+  if ( postId.match(/^%25/) && postId.split("=.")[0].length > 44 ) {
+    postId = postId.replace(/^%25/, '%')
+  }
+
 
   getPostData( postId, function(err, data) {
     data = JSON.stringify(data,null,2)
